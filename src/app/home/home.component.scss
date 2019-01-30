@@ -1,0 +1,20 @@
+@import "../../../src/assets/css/global";
+
+
+.section{
+  @media(min-width:0px){
+    padding: 20px 30px;
+  }
+  @media(min-width:371px){
+    padding: 20px 68px;
+  }
+}
+
+.introtext {
+  padding: 15px;
+  font-size: 18px;
+  text-align: justify;
+  @media(min-width:992px) {
+    padding: 0 50px;
+  }
+}

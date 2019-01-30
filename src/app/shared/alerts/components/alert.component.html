@@ -1,0 +1,11 @@
+<div class="alert toast-alert" *ngIf="message && displayAlert"
+     [ngClass]="{ 'alert': message, 'alert-dismissible alert-success': message.type === 'success', 'alert-dismissible alert-danger': message.type === 'error',
+      'alert-dismissible alert-warning': message.type === 'warning'}">
+  <div class="icon-container">
+    <i *ngIf="message.type === 'success'" class="fa fa-check-circle color-green-electric"></i>
+    <i *ngIf="message.type === 'danger'" class="fa fa-window-close-o color-red-electric"></i>
+    <i *ngIf="message.type === 'warning'" class="fa fa-check-circle color-red-electric"></i>
+  </div>
+  <button type="button" class="close btn-white" data-dismiss="alert" (click)="dismissAlert()">&times;</button>
+  <p class="white-text text-accent-3 center-align ">{{message?.text}}</p>
+</div>

@@ -1,0 +1,66 @@
+<div class="component-content">
+  <div class="container-fluid">
+    <div *ngIf="filterTeamsForm">
+      <div class="row" style="padding-top: 40px;">
+        <div class="col-sm-4 col-md-3" style="padding-top: 20px;">
+          <div class="sidebar">
+            <form class="form justify-content-center" (ngSubmit)="filterTeams()" [formGroup]="filterTeamsForm">
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Date</div>
+                <input type="date" class="form-control" style="border: 0px" formControlName="date">
+                <!-- <div *ngIf="form.hasError('date')" class="alert alert-danger">{{form.getError('date')}}</div> -->
+              </div>
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Nombre de places voulues</div>
+                <input type="number" class="form-control" style="border: 0px" formControlName="places_left">
+                <!-- <div *ngIf="form.hasError('n_places')" class="alert alert-danger">{{form.getError('n_places')}}</div> -->
+              </div>
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Theme</div>
+                <select formControlName="room.theme"
+                        #selectedTheme>
+                  <option [ngValue]="null">All</option>
+                  <option *ngFor="let theme of filtersInput?.themes; let i = index" [ngValue]="filtersInput.themes[i]">{{theme}}</option>
+                </select>
+              </div>
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Difficulté</div>
+                <select formControlName="room.difficulty"
+                        #selectedDifficulty>
+                  <option [ngValue]="null">All</option>
+                  <option *ngFor="let difficulty of filtersInput?.difficulties; let i = index" [ngValue]="filtersInput?.difficulties[i]">{{difficulty}}</option>
+                </select>
+              </div>
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Prix Minimum</div>
+                <input type="number" class="form-control" style="border: 0px" formControlName="min_price">
+                <!-- <div *ngIf="form.hasError('min_price')" class="alert alert-danger">{{form.getError('min_price')}}</div> -->
+              </div>
+
+              <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Prix Maximum</div>
+                <input type="number" class="form-control" style="border: 0px" formControlName="max_price">
+                <!-- <div *ngIf="form.hasError('max_price')" class="alert alert-danger">{{form.getError('max_price')}}</div> -->
+              </div>
+
+              <!-- <div class="card" style="margin-bottom: 20px;">
+                <div class="card-header">Heure Minimum</div>
+                <input type="number" class="form-control" style="border: 0px" formControlName="min_hour">
+                <div *ngIf="form.hasError('min_hour')" class="alert alert-danger">{{form.getError('min_hour')}}</div>
+              </div> -->
+            </form>
+          </div>
+        </div>
+        <div class="col-sm-8 col-sm-offset-3 col-md-9 col-md-offset-2 main">
+          <app-teams *ngIf="is_filter" [teams]=teams_filter></app-teams>
+          <app-teams *ngIf="!is_filter" [teams]=teams></app-teams>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

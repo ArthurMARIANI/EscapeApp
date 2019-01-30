@@ -1,0 +1,22 @@
+@import "global";
+
+div.masthead {
+  height: 350px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  // background-image: url('../img/header-bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  margin-bottom: 30px;
+  @include background-cover;
+  .intro-text {
+    padding: 150px 0;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 50px;
+    @include heading-font;
+  }
+}
+

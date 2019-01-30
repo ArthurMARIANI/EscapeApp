@@ -1,0 +1,20 @@
+<div class="component-content" id="teamcard">
+  <div class="row">
+    <div class="portfolio-item" *ngFor="let team of teams">
+      <h4>{{team?.titre}}</h4>
+      <a class="portfolio-link" data-toggle="modal" [routerLink]="['/teams', team?.id]">
+        <div class="portfolio-hover align-self-center">
+          <div class="d-block align-items-center h-100 portfolio-hover-content">
+            {{team?.room?.name}}
+          </div>
+        </div>
+        <img class="img-fluid squared-image" src="http://localhost:1337/{{team?.room?.image?.url}}">
+      </a>
+      <div class="info-caption">
+        <h6 style="float: left">{{team.nb_players_max - team.nb_players}} places restantes</h6>
+        <h4 style="float: right; margin-bottom: 0;">{{team?.price | toMoneySymbol}}</h4>
+      </div>
+      <app-display-players *ngIf="team?.list_players?.length > 0" [team]=team [longList]='false'></app-display-players>
+    </div>
+  </div>
+</div>

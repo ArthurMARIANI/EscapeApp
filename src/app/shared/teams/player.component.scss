@@ -1,0 +1,40 @@
+@import "../../../assets/css/global";
+
+span {
+  float: left;
+}
+tr{
+  height: 100px;
+}
+
+.player-avatar {
+  width: 39px;
+  height: 39px;
+  border-radius: 30px;
+  margin: 0px 4px;
+}
+
+.player-name {
+  max-width: 47px;
+  max-height: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-weight: bold;
+  font-size: 10px;
+}
+
+.player-avatar-large {
+  width: 65px;
+  border-radius: 65px;
+  margin: 0px 6px;
+}
+.player-name-large {
+  max-width: 75px;
+  max-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+}

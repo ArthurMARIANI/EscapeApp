@@ -1,0 +1,19 @@
+@import "../../../assets/css/global";
+
+.image-teaser{
+  height: 220px;
+  margin-bottom: 4px;
+}
+
+#escapecard {
+  .portfolio-item {
+    width: 265px;
+    padding: 0 15px;
+    margin: 15px auto;
+    .portfolio-link {
+      position: relative;
+      display: block;
+      cursor: pointer;
+    }
+  }
+}

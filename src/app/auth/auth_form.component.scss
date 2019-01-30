@@ -1,0 +1,42 @@
+@import "../../../src/assets/css/global";
+
+.card {
+    padding: 20px;
+    margin: 0 auto;
+    float: none;
+    background-color: $gray-900;
+    opacity: 0.95;
+    @media(min-width:600px){
+      max-width: 600px;
+      margin: auto;
+    }
+}
+
+.section-heading{
+  color: white;
+}
+
+.auth-content{
+  width: 100vw;
+  min-height: calc(100%);
+  padding-top: 100px;
+  padding-bottom: 100px;
+  @media(min-width:986px){
+    margin-left: calc((100vw - 976px) / 2 * -1);
+  }
+}
+
+.background-login{
+  background-image:url('../../../src/assets/img/login_bg.jpg');
+  background-size: cover;
+}
+
+.background-register{
+  background-image:url('../../../src/assets/img/register_bg.jpg');
+  background-size: cover;
+}
+
+.label-input{
+  color: white;
+}
+

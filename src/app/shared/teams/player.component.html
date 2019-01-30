@@ -1,0 +1,71 @@
+  <!-- SHORT LIST -->
+  <!--***  Display 4 Players ***-->
+  <div *ngIf="longList == false">
+    <div class="player-caption" *ngFor="let player of team.list_players.slice(0,4) ; let playerCount = index">
+      <span *ngIf="player && playerCount <= 5">
+        <a>
+          <img *ngIf="player.avatar_user.image" src="http://localhost:1337/{{player?.avatar_user?.image.url}}" class="player-avatar" placement="top" ngbTooltip={{player?.username}}>
+        </a>
+        <div class="player-name">{{player?.username}}</div>
+      </span>
+    </div>
+
+    <!--***  Display If Under 5 ***-->
+
+    <div *ngIf="team.nb_players_max <= 5">
+      <div class="player-caption extra" *ngFor="let player of team.list_players.slice(4,5) ; let playerCount = index">
+        <span *ngIf="player && playerCount <= 5">
+          <a>
+            <img *ngIf="player.avatar_user.image" src="http://localhost:1337/{{player?.avatar_user?.image.url}}" class="player-avatar" placement="top" ngbTooltip={{player?.username}}>
+          </a>
+          <div class="player-name">{{player?.username}}</div>
+        </span>
+      </div>
+
+
+      <span *ngFor="let dummy of ' '.repeat(team.places_left).split(''), let x = index">
+        <a>
+          <img src="assets/img/freeplayer.jpg" class="player-avatar" placement="top" ngbTooltip="Place libre">
+        </a>
+        <div class="player-name">Libre</div>
+      </span>
+    </div>
+
+    <!--***  Display If Over 5 ***-->
+
+    <div *ngIf="team.nb_players_max > 5">
+      <div class="listreduce" *ngIf="team.list_players.length <= 4 && team.nb_players_max > 5">
+        <span *ngFor="let dummy of ' '.repeat(4 - team.list_players.length).split(''), let x = index">
+          <a>
+            <img src="assets/img/freeplayer.jpg" class="player-avatar" placement="top" ngbTooltip="Place libre">
+          </a>
+          <div class="player-name">Libre</div>
+        </span>
+      </div>
+
+      <span id="listreduce" class="onreduce">
+        <a routerLink="/teams/{{team.id}}" style="cursor: pointer">
+          <img style="padding: 5px;" src="assets/img/more.jpg" class="player-avatar show-more">
+        </a>
+        <div class="player-name">{{team.nb_players_max-4}} de plus</div>
+      </span>
+    </div>
+  </div>
+
+  <!-- LONG LIST -->
+  <div *ngIf="longList == true">
+    <div class="player-caption" *ngFor="let player of team.list_players; let playerCount = index">
+      <span *ngIf="player && playerCount <= 5">
+        <a>
+          <img *ngIf="player.avatar_user.image" class="player-avatar-large" src="http://localhost:1337/{{player?.avatar_user?.image.url}}" placement="top" ngbTooltip={{player?.username}}>
+        </a>
+        <div class="player-name-large">{{player?.username}}</div>
+      </span>
+    </div>
+    <span *ngFor="let dummy of ' '.repeat(team.places_left).split(''), let x = index">
+      <a>
+        <img class="player-avatar-large" src="assets/img/freeplayer.jpg" placement="top" ngbTooltip="Place libre">
+      </a>
+      <div class="player-name-large">Libre</div>
+    </span>
+  </div>

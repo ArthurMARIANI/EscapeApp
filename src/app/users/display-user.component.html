@@ -1,0 +1,88 @@
+<div class="component-content">
+  <div class="container">
+
+    <div id="user-profile-2" class="user-profile">
+      <div class="tabbable">
+
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-5 center">
+            <span class="profile-picture">
+              <img *ngIf="user?.avatar_user?.image" class="profilepic editable img-responsive" alt=" Avatar" id="avatar2" src="http://localhost:1337/{{user?.avatar_user?.image.url}}">
+            </span>
+          </div>
+
+          <div class="col-xs-12 col-sm-7" *ngIf="updateUserForm">
+            <h4 class="blue">
+              <span class="middle">{{user?.username}}</span>
+            </h4>
+            <form class="profile-user-info" (ngSubmit)="createTeam()" [formGroup]="updateUserForm">
+              <div class="profile-info-row">
+                <div class="profile-info-name"> Prénom </div>
+                <div class="profile-info-value">
+                  <span *ngIf="!editionMode">{{user?.first_name}}</span>
+                  <input *ngIf="editionMode" type="text" formControlName="first_name" value="{{user?.first_name}}">
+                </div>
+              </div>
+
+              <div class="profile-info-row">
+                <div class="profile-info-name"> Nom </div>
+                <div class="profile-info-value">
+                  <span *ngIf="!editionMode">{{user?.last_name}}</span>
+                  <input *ngIf="editionMode" type="text" formControlName="last_name" value="{{user?.last_name}}">
+                </div>
+              </div>
+
+              <div class="profile-info-row">
+                <div class="profile-info-name"> Email </div>
+                <div class="profile-info-value">
+                  <span *ngIf="!editionMode">{{user?.email}}</span>
+                  <input *ngIf="editionMode" type="text" formControlName="email" value="{{user?.email}}">
+                </div>
+              </div>
+              <div class="profile-info-row">
+                <div class="profile-info-name"> Date de naissance </div>
+                <div class="profile-info-value">
+                  <span *ngIf="!editionMode">{{momentBirthday}}</span>
+                  <input *ngIf="editionMode" type="date" formControlName="birthday" value="{{user?.birthday}}">
+                </div>
+              </div>
+              <div class="profile-info-row">
+                <div class="profile-info-name"> Pays de résidence </div>
+                <div class="profile-info-value">
+                  <span *ngIf="!editionMode">{{user?.country}}</span>
+                  <input *ngIf="editionMode" type="text" formControlName="country" value="{{user?.country}}">
+                </div>
+              </div>
+              <a *ngIf="!editionMode" style="width:200px" (click)="EditionMode(true)" class="btn btn-block btn-primary text-center d-inline-block">
+                <span class="bigger-110">Modifier le profil</span>
+              </a>
+              <a *ngIf="editionMode" style="width:200px" (click)="UpdateUser(updateUserForm)" class="btn btn-block btn-success text-center d-inline-block">
+                <span class="bigger-110">Sauvegarder</span>
+              </a>
+            </form>
+          </div>
+        </div>
+        <br>
+
+        <div class="center card">
+          <div class="card-header">
+            Cagnotte
+          </div>
+          <div class="card-body">
+            {{user?.cagnotte}}€
+          </div>
+          <a [routerLink]="['']" href="#services">Transférer sur mon compte</a>
+        </div>
+        <br>
+
+        <app-teams *ngIf="user?.list_teams.length > 0" [teams]=user.list_teams></app-teams>
+
+
+        <div class="col-md-12 text-center">
+          <a [routerLink]="['/teams']" class="btn mx-auto" href="#services">Rejoins une Team</a>
+          <a [routerLink]="['/team/create']" class="btn mx-auto" href="#services">Crée une Team</a>
+        </div>
+      </div>
+    </div>
+  </div>

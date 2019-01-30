@@ -1,0 +1,51 @@
+@import "../../../assets/css/global";
+
+.info-caption{
+  display: inline-block;
+  *display: inline;
+  width:220px;
+  margin:8px;
+  vertical-align: top;
+  zoom: 1;
+}
+.squared-image{
+  margin-bottom: 4px;
+  background: 50% 50% no-repeat;
+  width: 235px;
+  height: 220px;
+}
+
+#teamcard {
+  .portfolio-item {
+    width: 265px;
+    padding: 0 15px;
+    margin: 15px auto;
+    .portfolio-link {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      .portfolio-hover {
+        position: absolute;
+        margin: 55px 0;
+        width: 100%;
+        height: 110px;
+        -webkit-transition: all ease 0.3s;
+        -moz-transition: all ease 0.3s;
+        transition: all ease 0.3s;
+        opacity: 0.8;
+        background: black;
+        &:hover {
+          opacity: 0.9;
+          height: 220px;
+          margin: 0px;
+          background: rgb(25, 25, 25);
+        }
+        .portfolio-hover-content {
+          font-size: 18px;
+          text-align: center;
+          color: white;
+        }
+      }
+    }
+  }
+}

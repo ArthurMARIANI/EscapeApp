@@ -1,0 +1,71 @@
+<div class="auth-content background-register">
+  <div *ngIf="!isAuthenticated" class="card card-block">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h4 class="section-heading">Se connecter</h4>
+        <br>
+        <alert></alert>
+      </div>
+    </div>
+    <div class="col-sm-10 offset-sm-1 text-center">
+      <form class="form justify-content-center" #registerForm="ngForm" [formGroup]="form.getForm()" (ngSubmit)="register(registerForm.value)">
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="username" placeholder="Nom d'utilisateur">
+          <div *ngIf="form.hasError('username')" class="alert alert-danger">
+            {{form.getError('username')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="first_name" placeholder="Prénom">
+          <div *ngIf="form.hasError('first_name')" class="alert alert-danger">
+            {{form.getError('first_name')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="last_name" placeholder="Nom de famille">
+          <div *ngIf="form.hasError('last_name')" class="alert alert-danger">
+            {{form.getError('last_name')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="email" placeholder="Email">
+          <div *ngIf="form.hasError('email')" class="alert alert-danger">
+            {{form.getError('email')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="radio" formControlName="gender" value="male" id="male">
+          <label class="label-input ml-1" for="male">Homme</label>
+          <input class="ml-1" type="radio" formControlName="gender" value="female" id="female">
+          <label class="label-input ml-1" for="female">Femme</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="nationality" placeholder="Nationalité">
+          <div *ngIf="form.hasError('nationality')" class="alert alert-danger">
+            {{form.getError('nationality')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" formControlName="country" placeholder="Pays de résidence">
+          <div *ngIf="form.hasError('country')" class="alert alert-danger">
+            {{form.getError('country')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          <div *ngIf="form.hasError('password')" class="alert alert-danger">
+            {{form.getError('password')}}
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" formControlName="repassword" placeholder="Confirm password">
+          <div *ngIf="form.hasError('repassword')" class="alert alert-danger">
+            {{form.getError('repassword')}}
+          </div>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Créer un compte</button>
+      </form>
+    </div>
+  </div>
+</div>

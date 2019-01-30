@@ -1,0 +1,55 @@
+<div class="component-content">
+  <div class="masthead">
+    <div class="intro-text">
+      Faire équipe est la clé !
+    </div>
+  </div>
+  <div class="container introtext">
+    Rejoins notre communauté et partage ton aventure avec d'autres joueurs. Trouve ta place dans une équipe et rencontre tes
+    coéquipiers dans l'escape room
+  </div>
+  <div class="section">
+    <app-teams class="display_content" [limited]=6></app-teams>
+    <div class="text-center">
+      <a class="btn btn-primary" href="#services" routerLink="/teams">Voir plus d'équipes</a>
+    </div>
+  </div>
+
+  <div class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-heading">Paies ta place moins cher!</div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-info text-white">
+    Content Form
+  </div>
+  <a [routerLink]="['/team/create']" class="btn btn-primary mx-auto" style="width:100px" href="#services">Voir les tarifs</a>
+
+  <div class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-heading">Let's team up!</div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-info text-white">
+    Text about team creation
+  </div>
+
+  <a [routerLink]="['/team/create']" class="btn btn-primary" href="#services">Crée Team</a>
+
+  <div class="masthead">
+    <div class="container">
+      <div class="intro-text">
+        <div class="intro-heading">Immerge toi dans un univers</div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-info text-white">
+    Text about Escapes
+  </div>
+  <app-escapegame [limited]=6></app-escapegame>
+  <a class="btn btn-primary" href="#services" routerLink="/escapegames">Voir plus</a>
+</div>

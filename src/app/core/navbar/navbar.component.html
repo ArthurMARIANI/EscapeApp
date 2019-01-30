@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" routerLink="">
+      <div class="title-brand">
+      Escape
+      <br>
+      Team
+      </div>
+      <img src="assets/img/logo.png">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link js-scroll-trigger" routerLink="/teams">Rejoins une Team</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link js-scroll-trigger" routerLink="/team/create">Crée ta Team</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-item nav-link js-scroll-trigger" routerLink="/escapegames">Escape Games</a>
+        </li>
+        <li *ngIf="!user" class="nav-item">
+          <a href="#" class="nav-item nav-link js-scroll-trigger" routerLink="/login">Connection / Inscription</a>
+        </li>
+        <li *ngIf="user" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img *ngIf="user.avatar_user.image" src="http://localhost:1337/{{user?.avatar_user?.image.url}}" class="avatar-navbar">
+          </a>
+          <div  class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a href="#" class="nav-item nav-link  js-scroll-trigger" routerLink="/user/me">Mon profil</a>
+            <a href="#" class="nav-item nav-link  js-scroll-trigger" (click)="authService.logout()" routerLink="/login">Déconnexion</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+

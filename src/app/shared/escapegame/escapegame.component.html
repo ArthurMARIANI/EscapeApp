@@ -1,0 +1,12 @@
+<div class="component-content" id="escapecard">
+  <div class="row">
+    <div class="portfolio-item" *ngFor="let escapegame of escapegames_displayed">
+      <h4>{{escapegame?.name}}</h4>
+      <a class="portfolio-link" data-toggle="modal" [routerLink]="['/escapegames', escapegame.id]">
+        <img class="img-fluid image-teaser" src="http://localhost:1337/{{escapegame?.image?.url}}">
+      </a>
+      <h5>{{escapegame?.city}}</h5>
+      <h5>{{escapegame?.list_rooms.length}} rooms</h5>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="component-content"  *ngIf="createTeamForm">
+  <h2>
+    Créer une équipe d'escape game
+  </h2>
+  <h6>Dis-nous quelle escape room tu as réservé et combien de joueurs tu souhaites accueillir dans ton équipe. Nous t’aiderons à trouver des coéquipiers parmi tes amis ou les membres de notre communauté. </h6>
+  <br>
+  Besoin d’aide?  Comment créer une équipe d’escape game
+  <form class="form justify-content-center" [formGroup]="createTeamForm">
+    <div class="form-group">
+      <div *ngIf="escapegames">
+        <label>EscapeGame:</label>
+        <select formControlName="escapegame">
+          <option *ngFor="let escapegame of escapegames" [(ngValue)]="escapegame.id" >{{escapegame?.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <div *ngIf="rooms">
+        <label>Room:</label>
+        <select formControlName="room">
+          <option *ngFor="let room of rooms" [(ngValue)]="room.id">{{room?.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div *ngIf="room">
+      <div class="card">
+        <div style="display : flex">
+          <div class="col-sm-7">
+            <img style="width: 200px" class="img-fluid " src="http://localhost:1337/{{room?.image?.url}}">
+            <h2 class="titre">{{room?.name}}</h2>
+            <div class="row">
+              <div class="media mr-auto">
+                <i class="icon fa fa-hashtag mr-3"></i>
+                <div class="media-body">
+                  <h5 class="mt-0">{{room?.theme}}</h5>
+                </div>
+              </div>
+              <div class="media mr-auto">
+                <i class="icon fa fa-lightbulb-o mr-3"></i>
+                <div class="media-body">
+                  <h5 class="mt-0">{{room?.difficulty}}</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              {{room?.description}}
+            </div>
+            <br>
+            <div class="row w-100">
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div *ngIf="placesList.length > 0">
+          <label>Nb de place déjà réservées: ({{room?.min_place_number}} joueurs minimum)</label>
+          <select formControlName="nb_players">
+            <option *ngFor="let nbPlayer of placesList" [ngValue]="nbPlayer">{{nbPlayer}}</option>
+          </select>
+        </div>
+        <div *ngIf="form.hasError('nb_players')" class="alert alert-danger">
+          {{form.getError('nb_players')}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Veuillez indiquer le nom et prénom des {{team?.nb_players}} joueurs déjà inscrit: (suivez ce model "nom prénom, nom prénom, ....")</label>
+        <input type="text" class="form-control" formControlName="unregistered_players" placeholder="Gil Payen, François Clouzet">
+        <div *ngIf="form.hasError('unregistered_players')" class="alert alert-danger">
+          {{form.getError('unregistered_players')}}
+        </div>
+      </div>
+      <div>
+        <label>Nb de places maximum:</label>
+        {{team?.nb_players_max}}
+      </div>
+      <div class="form-group">
+        <label>Date:</label>
+        <input type="date" class="form-control" formControlName="date" useValueAsDate>
+        <div *ngIf="form.hasError('date')" class="alert alert-danger">
+          {{form.getError('date')}}
+        </div>
+      </div>
+
+      <div class="form-group" >
+        <div *ngIf="hoursList.length > 0">
+          <label>Heure:</label>
+          <select formControlName="hour">
+            <option *ngFor="let startingHour of hoursList" [ngValue]="startingHour">{{startingHour}}</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <h6>Prix des places actuellement: {{team?.price}}€/pers</h6>
+      </div>
+      <div>
+        <h6>Prix Total: {{team?.bill_total}}€</h6>
+      </div>
+
+      <div class="form-group">
+        <label>Nom d'équipe:</label>
+        <input type="text" class="form-control" formControlName="titre" placeholder="Nom d'équipe">
+        <div *ngIf="form.hasError('titre')" class="alert alert-danger">
+          {{form.getError('titre')}}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Commentaire:</label>
+        <input type="text" class="form-control" formControlName="description" placeholder="Ajouter un commentaire">
+        <div *ngIf="form.hasError('description')" class="alert alert-danger">
+          {{form.getError('description')}}
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Merci d'indiquer le nom, le prénom et l'adresse mail de la personne ayant réservé si ce n'est pas vous</label>
+        <input type="text" class="form-control" formControlName="reservation"
+               placeholder="Nom et prénom">
+        <input type="text" class="form-control" formControlName="email_reservation"
+               placeholder="email">
+        <div *ngIf="form.hasError('email_reservation')" class="alert alert-danger">
+          {{form.getError('email_reservation')}}
+        </div>
+      </div>
+
+      <div class="row text-center">
+        <div class="col-md-4 offset-md-2 col-sm-4 offset-sm-2 col-4 offset-2">
+          <img class="ml-1" src="assets/img/unlock.svg"  style="width: 300px; height: 300px">
+          <br>
+          <button class="btn btn-primary" type="submit" [disabled]="!createTeamForm.valid" (click)="createTeamPublic()">Créer une équipe publique</button>
+          <br>
+          avec toute la communauté
+        </div>
+        <div class="col-md-4 col-sm-4 col-4 ml-5">
+          <img class="ml-1" src="assets/img/lock.svg"  style="width: 300px; height: 300px">
+          <br>
+          <button class="btn btn-secondary" type="submit" [disabled]="!createTeamForm.valid" (click)="createTeamPrivate()">Créer une équipe privée</button>
+          <br>
+          avec tes contacts
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

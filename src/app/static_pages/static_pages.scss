@@ -1,0 +1,64 @@
+@import "../../assets/css/variables";
+
+.content{
+  padding: 50px 80px;
+  h1{
+    font-size: 30px;
+    font-weight: 50;
+    margin-bottom: 30px;
+  }
+  h2{
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+
+  }
+  ol {
+  list-style: none;
+  margin-left: 0;
+  margin-left: 1.3em;
+  }
+
+  ol li {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  ol, ol li { margin-left: 0; padding-left: 0; }
+
+
+  li p {
+    font-size: 16px;
+    font-weight: normal;
+    text-align: justify;
+  }
+
+  span {
+    font-size: 60px;
+    position: absolute;
+    line-height: 60px;
+    color: $primary;
+  }
+
+
+
+  .col{
+    text-align: center;
+  }
+
+  @media (min-width: 768px) {
+  .content-collumn{
+      padding-left: 90px;
+    }
+  }
+
+  .over-btn-image{
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+  .btn{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+}

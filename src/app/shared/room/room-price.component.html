@@ -1,0 +1,45 @@
+<div class="row">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Joueurs</th>
+        <th style="width: 70px" scope="col">Heure pleine</th>
+        <th style="width: 70px" scope="col">Heure creuse</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td>
+        <div class="line" *ngFor="let nb_player of room.prices[0]">
+          <div *ngIf="nb_player <= 5">
+            <span *ngFor="let dummy of ' '.repeat(nb_player).split('')">
+              <img class="player-avatar" src="assets/img/freeplayer.jpg">
+            </span>
+            <br> {{nb_player}} joueurs
+          </div>
+          <div class="line" *ngIf="nb_player > 5">
+            <span *ngFor="let dummy of ' '.repeat(4).split('')">
+              <img class="player-avatar" src="assets/img/freeplayer.jpg">
+            </span>
+            <span>
+              <img class="player-avatar" src="assets/img/more.jpg">
+            </span>
+            <br> {{nb_player}} joueurs
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="line" *ngFor="let low_price of room.prices[1]">
+          <b>{{low_price}}</b>
+        </div>
+      </td>
+      <td>
+        <div class="line" *ngFor="let full_price of room.prices[2]">
+          <b>{{full_price}}</b>
+        </div>
+      </td>
+    </tbody>
+  </table>
+  <div class="line" *ngFor="let pricepeakoff of room.price_peak_hours">
+    Price PeakOff{{pricepeakoff}}
+  </div>
+</div>

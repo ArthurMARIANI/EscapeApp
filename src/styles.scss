@@ -1,0 +1,54 @@
+@import "./src/assets/css/global";
+
+html{
+  height: 100%;
+  max-width: 976px;
+  margin: 0 auto;
+}
+
+body {
+  @media(min-width:0px){
+    padding-top: 56px;
+    height: calc(100% - 170px);
+  }
+
+  @media(min-width:768px){
+    height: calc(100% - 130px);
+  }
+  @media(min-width:992px){
+    padding-top: 0px;
+    margin-top: 102px;
+    height: calc(100% - 192px);
+  }
+}
+
+.component-content{
+  min-height: calc(100%);
+}
+
+
+.loader {
+  $loadersize: 120px;
+  position: fixed;
+  top: calc(50% - 60px);
+  left: calc(50% - 60px);
+  transform: translate(- calc(50% - 60px), - calc(50% - 60px));
+  transform: -webkit-translate(- calc(50% - 60px), - calc(50% - 60px));
+  transform: -moz-translate(- calc(50% - 60px), - calc(50% - 60px));
+  transform: -ms-translate(- calc(50% - 60px), - calc(50% - 60px));
+
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid $primary;
+  border-radius: 50%;
+  margin:0;
+  width: $loadersize;
+  height: $loadersize;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
